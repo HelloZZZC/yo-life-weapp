@@ -1,20 +1,35 @@
 //app.js
 App({
   onLaunch: function () {
+    //小程序启动后出发
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+    
+    //检查session是否过期
+    wx.checkSession({
+      success: () => {
+        console.log('session not expired');
+      },
+      fail: () => {
+        //失败则去重新登录
+        login();
       }
     })
+
+    // 登录
+    // wx.login({
+    //   success: res => {
+    //     console.log(res.code);
+    //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
+    //   }
+    // })
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
+        console.log(res.authSetting['scope.userInfo']);
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
@@ -32,6 +47,27 @@ App({
         }
       }
     })
+    function login() {
+      wx.login({
+        success: res => {
+          wx.request({
+            url: 'http://wechat-server.com/api/login',
+            data: {
+              code: res.code
+            },
+            success: res => {
+              wx.setStorage({
+                key: 'thirdKey',
+                data: res.data.thirdKey,
+              })
+            },
+            fail: () => {
+              console.log('wx login failed');
+            }
+          })
+        }
+      })
+    }
   },
   globalData: {
     userInfo: null

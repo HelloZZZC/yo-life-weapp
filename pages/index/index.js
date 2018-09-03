@@ -34,21 +34,56 @@ Page({
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
         success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
+          wx.request({
+            url: 'http://wechat-server.com/api/bind',
+            method: 'POST',
+            data: {
+              encryptedData: res.encryptedData,
+              iv: res.iv,
+              data: res.rawData,
+              thirdKey: wx.getStorageSync('thirdKey')
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded'
+            },
+            success: res => {
+              app.globalData.userInfo = res.data
+              this.setData({
+                userInfo: res.data,
+                hasUserInfo: true
+              })
+            },
+            fail: () => {
+              console.log('bind failed');
+            }
           })
         }
       })
     }
   },
   getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+    wx.request({
+      url: 'http://wechat-server.com/api/bind',
+      method: 'POST',
+      data: {
+        encryptedData: e.detail.encryptedData,
+        iv: e.detail.iv,
+        data: e.detail.rawData,
+        thirdKey: wx.getStorageSync('thirdKey')
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: res => {
+        app.globalData.userInfo = res.data
+        this.setData({
+          userInfo: res.data,
+          hasUserInfo: true
+        })
+      },
+      fail: () => {
+        console.log('bind failed');
+      }
     })
-  }
+  },
 })
