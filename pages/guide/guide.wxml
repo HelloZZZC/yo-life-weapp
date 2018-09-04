@@ -1,0 +1,5 @@
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">立即体验</button>
+  </view>
+</view>
