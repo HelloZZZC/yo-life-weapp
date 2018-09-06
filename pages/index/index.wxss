@@ -19,3 +19,18 @@
 .usermotto {
   margin-top: 200px;
 }
+
+.add-btn {
+  width:100rpx;
+  height:100rpx;
+  border-radius:50rpx;
+  background-color:#5FB785 !important;
+  font-size: 80rpx;
+  line-height: 90rpx;
+}
+
+.page-bottom {
+  position:fixed;
+  bottom:20rpx;
+  width:100%;
+}

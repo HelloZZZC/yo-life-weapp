@@ -1,6 +1,0 @@
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">立即体验</button>
-    <button wx:else bindtap="redirectIndex">进入列表</button>
-  </view>
-</view>
