@@ -1,4 +1,6 @@
 /**app.wxss**/
+@import "/vendor/iconfont/iconfont.wxss";
+
 .container {
   height: 100%;
   display: flex;
@@ -7,4 +9,15 @@
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
-} 
+}
+
+.text-center {
+  display: flex;
+  justify-content: center;
+}
+
+.color-gray {
+  color: gray;
+}
+
+

@@ -1,6 +1,5 @@
 {
   "pages":[
-    "pages/guide/guide",
     "pages/index/index",
     "pages/logs/logs"
   ],
