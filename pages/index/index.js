@@ -36,10 +36,15 @@ Page({
     }
   },
   getUserInfo: function(e) {
-    bind(e.detail)
+    bind(e.detail, true)
   },
+  addPlan: function(e) {
+    wx.navigateTo({
+      url: '../plan/plan?mode=create',
+    })
+  }
 })
-function bind(response) {
+function bind(response, needRedirect = false) {
   wx.request({
     url: 'http://wechat-server.com/api/bind',
     method: 'POST',
@@ -54,10 +59,12 @@ function bind(response) {
     },
     success: res => {
       app.globalData.userInfo = res.data
-      //跳转至index
-      wx.redirectTo({
-        url: '../index/index',
-      })
+      //跳转至新增plan页面
+      if (needRedirect) {
+        wx.navigateTo({
+          url: '../plan/plan?mode=create',
+        })
+      }
     },
     fail: () => {
       console.log('bind failed');
