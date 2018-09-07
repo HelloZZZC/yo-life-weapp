@@ -1,14 +1,7 @@
 <!--index.wxml-->
 <view class="container">
-  <!-- <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view> -->
   <view>
-    <view wx:if="{{ !hasUserInfo }}" class="color-gray">
+    <view class="color-gray">
       <text class="text-center">欢迎使用YoLife</text>
       <text class="text-center">\n开始记录你的第一份计划吧</text>
     </view>
@@ -16,5 +9,5 @@
 </view>
 <view class="page-bottom">
   <button wx:if="{{ !hasUserInfo }}" class="add-btn" type="primary" open-type="getUserInfo" bindgetuserinfo="getUserInfo">+</button>
-  <button wx:else class="add-btn" type="primary">+</button>
+  <button wx:else class="add-btn" type="primary" bindtap="addPlan">+</button>
 </view>
