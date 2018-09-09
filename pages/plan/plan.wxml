@@ -1,0 +1,30 @@
+<view>
+  <form bindsubmit="formSubmit">
+    <i-panel title="计划时间" i-class="p20">
+      <picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="pickTime">
+        <view class="picker">
+          {{executedTime}}
+        </view>
+      </picker>
+    </i-panel>
+    <i-panel title="优先级" i-class="p20">
+      <i-radio-group current="{{currentLevel}}" bindchange="pickLevel">
+        <i-radio wx:for="{{level}}" wx:key="{{item.key}}" value="{{item.value}}">
+        </i-radio>
+      </i-radio-group>
+    </i-panel>
+    <i-panel title="内容" i-class="p20">
+      <i-input type="textarea" value="{{ planContent }}" placeholder="请输入内容" bindchange="inputPlanContent" />
+    </i-panel>
+    <i-panel title="每日计划" i-class="p20">
+      <i-switch value="{{ isDayPlan }}" bind:change="pickDayPlan" slot="footer"></i-switch>
+    </i-panel>
+    <i-panel title="提醒" i-class="p20">
+      <i-radio-group current="{{currentRemindSetting}}" bindchange="pickRemindSetting">
+        <i-radio wx:for="{{remindSetting}}" wx:key="{{item.key}}" value="{{item.value}}">
+        </i-radio>
+      </i-radio-group>
+    </i-panel>
+    <button class="btn-info" form-type="submit" type="primary">保存</button>
+  </form>
+</view>
