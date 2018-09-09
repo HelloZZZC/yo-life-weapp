@@ -34,3 +34,7 @@
   bottom:20rpx;
   width:100%;
 }
+
+page {
+  background-color:#FAFAFA;
+}
