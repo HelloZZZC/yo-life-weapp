@@ -1,9 +1,16 @@
 <view>
   <form bindsubmit="formSubmit">
-    <i-panel title="计划时间" i-class="p20">
-      <picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="pickTime">
+    <i-panel title="开始时间" i-class="p20">
+      <picker mode="time" value="{{executedStartTime}}" start="00:00" end="23:59" bindchange="pickStartTime">
         <view class="picker">
-          {{executedTime}}
+          {{executedStartTime}}
+        </view>
+      </picker>
+    </i-panel>
+    <i-panel title="结束时间" i-class="p20">
+      <picker mode="time" value="{{executedEndTime}}" start="00:00" end="23:59" bindchange="pickEndTime">
+        <view class="picker">
+          {{executedEndTime}}
         </view>
       </picker>
     </i-panel>
