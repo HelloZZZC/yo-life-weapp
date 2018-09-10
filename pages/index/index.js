@@ -5,7 +5,8 @@ const app = getApp()
 Page({
   data: {
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    plans: {}
   },
   //事件处理函数
   bindViewTap: function() {
@@ -31,7 +32,18 @@ Page({
       wx.getUserInfo({
         success: res => {
           bind(res);
+          this.setData({
+            hasUserInfo: true
+          })
         }
+      })
+    }
+    if (this.data.hasUserInfo) {
+      wx.request({
+        url: 'http://wechat-server.com/api/plans',
+        data: {
+          code: res.code
+        },
       })
     }
   },

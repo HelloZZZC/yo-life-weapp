@@ -18,7 +18,8 @@ Page({
       value: '提早10分钟'
     }],
     currentLevel: '普通',
-    executedTime: '',
+    executedStartTime: '',
+    executedEndTime: '',
     currentRemindSetting: '',
     isDayPlan: false,
     planContent: ''
@@ -31,9 +32,14 @@ Page({
   },
   onLoad: function (option) {
   },
-  pickTime: function (e) {
+  pickStartTime: function (e) {
     this.setData({
-      executedTime: e.detail.value
+      executedStartTime: e.detail.value
+    })
+  },
+  pickEndTime: function (e) {
+    this.setData({
+      executedEndTime: e.detail.value
     })
   },
   pickLevel: function (e) {
@@ -61,7 +67,8 @@ Page({
     let level = getKeyByValue(this.data.level, this.data.currentLevel)
 
     let data = {
-      executedTime: this.data.executedTime,
+      executedStartTime: this.data.executedStartTime,
+      executedEndTime: this.data.executedEndTime,
       content: this.data.planContent,
       isDayPlan: this.data.isDayPlan,
       remindSetting: remindSetting,
