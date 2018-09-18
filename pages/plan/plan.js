@@ -11,16 +11,16 @@ Page({
       value: '紧急'
     }],
     remindSetting: [{
+      key: 'noRemind',
+      value: '不提醒'
+    },{
       key: 'fiveMinEarly',
       value: '提早5分钟'
-    },{
-      key: 'tenMinEarly',
-      value: '提早10分钟'
     }],
     currentLevel: '普通',
     executedStartTime: '',
     executedEndTime: '',
-    currentRemindSetting: '',
+    currentRemindSetting: '不提醒',
     isDayPlan: false,
     planContent: ''
   },
@@ -72,16 +72,16 @@ Page({
       content: this.data.planContent,
       isDayPlan: this.data.isDayPlan,
       remindSetting: remindSetting,
-      level: level,
-      thirdKey: wx.getStorageSync('thirdKey')     
+      level: level
     }
 
     wx.request({
-      url: 'http://wechat-server.com/api/plan',
+      url: 'http://wechat-server.com/api/plans',
       method: 'POST',
       data: data,
       header: {
-        'content-type': 'application/x-www-form-urlencoded'
+        'content-type': 'application/x-www-form-urlencoded',
+        'auth-key': wx.getStorageSync('thirdKey')
       },
       success: res => {
         wx.navigateTo({
