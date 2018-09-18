@@ -1,10 +1,17 @@
 <!--index.wxml-->
 <view class="container">
-  <view>
+  <view wx:if="{{ !hasUserInfo || !count }}">
     <view class="color-gray">
       <text class="text-center">欢迎使用YoLife</text>
       <text class="text-center">\n开始记录你的第一份计划吧</text>
     </view>
+  </view>
+  <view class="plan-container" wx:else>
+    <i-swipeout wx:for="{{plans}}" wx:key="{{item.id}}" actions="{{actions}}" toggle="{{false}}" unclosable="{{true}}">
+      <view slot="content">
+        {{ item.content }}
+      </view>
+    </i-swipeout>
   </view>
 </view>
 <view class="page-bottom">

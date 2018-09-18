@@ -38,3 +38,7 @@
 page {
   background-color:#FAFAFA;
 }
+
+.plan-container {
+  width: 100%;
+}
