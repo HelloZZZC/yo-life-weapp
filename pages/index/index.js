@@ -6,7 +6,25 @@ Page({
   data: {
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    plans: {}
+    plans: {},
+    count: 0,
+    actions: [
+      {
+        name: '删除',
+        color: '#fff',
+        fontsize: '20',
+        width: 100,
+        icon: 'like',
+        background: '#ed3f14'
+      },
+      {
+        name: '编辑',
+        width: 100,
+        color: '#80848f',
+        fontsize: '20',
+        icon: 'undo'
+      }
+    ]
   },
   //事件处理函数
   bindViewTap: function() {
@@ -41,9 +59,20 @@ Page({
     if (this.data.hasUserInfo) {
       wx.request({
         url: 'http://wechat-server.com/api/plans',
-        data: {
-          code: res.code
+        method: 'GET',
+        header: {
+          'auth-key': wx.getStorageSync('thirdKey')
         },
+        data: {
+          offset: 0,
+          limit: 10
+        },
+        success: res => {
+          this.setData({
+            plans: res.data.items,
+            count: res.data.count
+          });
+        }
       })
     }
   },
@@ -64,10 +93,10 @@ function bind(response, needRedirect = false) {
       encryptedData: response.encryptedData,
       iv: response.iv,
       data: response.rawData,
-      thirdKey: wx.getStorageSync('thirdKey')
     },
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+      'auth-key': wx.getStorageSync('thirdKey')
     },
     success: res => {
       app.globalData.userInfo = res.data
