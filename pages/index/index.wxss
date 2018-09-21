@@ -1,4 +1,33 @@
 /**index.wxss**/
+.index-container {
+  text-align: center;
+}
+
+.index-blank__img {
+  margin-top: 248rpx;
+  width: 528rpx;
+  height: 368rpx;
+}
+
+.index-blank__text {
+  margin-top: 30rpx;
+  color: #B0BDC9;
+  font-size: 32rpx;
+  text-align: center;
+  letter-spacing: 4rpx;
+}
+
+.add-btn {
+  position: absolute;
+  right: 48rpx;
+  bottom: 64rpx;
+  line-height: 80rpx;
+  border-radius:50%;
+  color: #6C91FF;
+  font-size: 100rpx;
+  box-shadow:0px 8px 20px 0px rgba(91,151,255,0.3);
+}
+
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -18,25 +47,6 @@
 
 .usermotto {
   margin-top: 200px;
-}
-
-.add-btn {
-  width:100rpx;
-  height:100rpx;
-  border-radius:50rpx;
-  background-color:#5FB785 !important;
-  font-size: 80rpx;
-  line-height: 90rpx;
-}
-
-.page-bottom {
-  position:fixed;
-  bottom:20rpx;
-  width:100%;
-}
-
-page {
-  background-color:#FAFAFA;
 }
 
 .plan-container {

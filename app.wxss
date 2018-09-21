@@ -1,6 +1,11 @@
 /**app.wxss**/
 @import "/vendor/iconfont/iconfont.wxss";
 
+page {
+  height: 100%;
+  background-color:#FAFAFA;
+}
+
 .container {
   height: 100%;
   display: flex;
