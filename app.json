@@ -6,8 +6,8 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#6C91FF",
     "navigationBarTitleText": "YoLife",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"#fff"
   }
 }
