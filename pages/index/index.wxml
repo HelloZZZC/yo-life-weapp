@@ -14,5 +14,5 @@
     </i-swipeout>
   </view>
 </view>
-<view wx:if="{{ !hasUserInfo }}" class="yo-icon yo-icon-add add-btn" bindgetuserinfo="getUserInfo"></view>
-<view wx:else bindtap="addPlan" class="yo-icon yo-icon-add add-btn"></view>
+<view wx:if="{{ !hasUserInfo }}" class="yo-icon yo-icon-add add-btn bubble" bindgetuserinfo="getUserInfo"></view>
+<view wx:else bindtap="addPlan" class="yo-icon yo-icon-add add-btn bubble"></view>

@@ -27,6 +27,27 @@
   font-size: 100rpx;
   box-shadow:0px 8px 20px 0px rgba(91,151,255,0.3);
 }
+.add-btn.bubble:after {
+  content: "";
+  background: #d3dcf7;
+  position: absolute;
+  width: 130rpx;
+  height: 130rpx;
+  left: -14rpx;
+  right: 0;
+  top: -3rpx;
+  bottom: 0;
+  opacity: 0;
+  margin: auto;
+  border-radius: 50%;
+  transform: scale(1);
+  transition: all 0.75s ease-in-out;
+}
+.add-btn.bubble:active:after {
+  transform: scale(0);
+  opacity: 1;
+  transition: 0s;
+}
 
 .userinfo {
   display: flex;
