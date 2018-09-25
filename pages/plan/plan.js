@@ -2,7 +2,8 @@ Page({
   data: {
     level: [{
       key: 0,
-      value: '普通'
+      value: '普通',
+      checked: 'true'
     },{
       key: 1,
       value: '中等'
@@ -18,7 +19,7 @@ Page({
       value: '提早5分钟'
     }],
     currentLevel: '普通',
-    executedStartTime: '',
+    executedStartTime: '选择时间',
     executedEndTime: '',
     currentRemindSetting: '不提醒',
     isDayPlan: false,

@@ -3,7 +3,7 @@
 
 page {
   height: 100%;
-  background-color:#FAFAFA;
+  background-color:#fff;
 }
 
 .container {
@@ -14,6 +14,16 @@ page {
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
+}
+
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.hide {
+  display: none;
 }
 
 .text-center {
@@ -29,3 +39,10 @@ page {
   padding: 20rpx;
 }
 
+.mr20 {
+  margin-right: 20rpx;
+}
+
+.ml20 {
+  margin-left: 20rpx;
+}
