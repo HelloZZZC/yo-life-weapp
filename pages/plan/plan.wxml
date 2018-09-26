@@ -1,31 +1,28 @@
-<view class='plan-body'>
-  <view class='calendar-container'>
-    <i class="yo-icon yo-icon-calendar"></i>
-    <text class='text-date'>2018-09-05</text>
-  </view>
+<view>
   <form bindsubmit="formSubmit">
-    <textarea class='plan-content' placeholder='例：请在这里输入内容（必填）' value="{{ planContent }}" bindchange="inputPlanContent"></textarea>
-    <view class="plan-item clearfix">
-      <text class='item-title'>优先级</text>
-      <radio-group class="item-selector" bindchange="pickLevel">
-        <label class="radio-item" wx:for="{{level}}">
-          <radio class="hide" value="{{item.value}}" checked="{{item.checked}}"/>{{item.value}}
-        </label>
-      </radio-group>
-    </view>
-    <view class="plan-item clearfix">
+    <i-panel title="开始时间" i-class="p20">
       <picker mode="time" value="{{executedStartTime}}" start="00:00" end="23:59" bindchange="pickStartTime">
-        <text class='item-title'>时间</text>
-        <view class="item-selector">
+        <view class="picker">
           {{executedStartTime}}
         </view>
       </picker>
-    </view>
-  
-  
-    <!-- <i-panel title="内容" i-class="p20">
-      <i-input type="textarea"  placeholder="请输入内容" " />
-    </i-panel> -->
+    </i-panel>
+    <i-panel title="结束时间" i-class="p20">
+      <picker mode="time" value="{{executedEndTime}}" start="00:00" end="23:59" bindchange="pickEndTime">
+        <view class="picker">
+          {{executedEndTime}}
+        </view>
+      </picker>
+    </i-panel>
+    <i-panel title="优先级" i-class="p20">
+      <i-radio-group current="{{currentLevel}}" bindchange="pickLevel">
+        <i-radio wx:for="{{level}}" wx:key="{{item.key}}" value="{{item.value}}">
+        </i-radio>
+      </i-radio-group>
+    </i-panel>
+    <i-panel title="内容" i-class="p20">
+      <i-input type="textarea" value="{{ planContent }}" placeholder="请输入内容" bindchange="inputPlanContent" />
+    </i-panel>
     <i-panel title="每日计划" i-class="p20">
       <i-switch value="{{ isDayPlan }}" bind:change="pickDayPlan" slot="footer"></i-switch>
     </i-panel>
