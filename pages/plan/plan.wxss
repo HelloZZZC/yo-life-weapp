@@ -35,7 +35,7 @@
 .plan-item {
   line-height: 96rpx;
   height: 96rpx;
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
 }
 
 .item-title {
