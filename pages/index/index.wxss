@@ -1,4 +1,51 @@
 /**index.wxss**/
+.index-container {
+  text-align: center;
+}
+
+.index-blank__img {
+  margin-top: 248rpx;
+  width: 528rpx;
+  height: 368rpx;
+}
+
+.index-blank__text {
+  margin-top: 30rpx;
+  color: #B0BDC9;
+  font-size: 32rpx;
+  text-align: center;
+  letter-spacing: 4rpx;
+}
+
+.add-btn {
+  position: absolute;
+  right: 36rpx;
+  bottom: 40rpx;
+  height: 150rpx;
+  width: 150rpx;
+}
+.add-btn.bubble:after {
+  content: "";
+  background: #d3dcf7;
+  position: absolute;
+  width: 130rpx;
+  height: 130rpx;
+  left: -3rpx;
+  right: 0;
+  top: -15rpx;
+  bottom: 0;
+  opacity: 0;
+  margin: auto;
+  border-radius: 50%;
+  transform: scale(1);
+  transition: all 0.75s ease-in-out;
+}
+.add-btn.bubble:active:after {
+  transform: scale(0);
+  opacity: 1;
+  transition: 0s;
+}
+
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -18,25 +65,6 @@
 
 .usermotto {
   margin-top: 200px;
-}
-
-.add-btn {
-  width:100rpx;
-  height:100rpx;
-  border-radius:50rpx;
-  background-color:#5FB785 !important;
-  font-size: 80rpx;
-  line-height: 90rpx;
-}
-
-.page-bottom {
-  position:fixed;
-  bottom:20rpx;
-  width:100%;
-}
-
-page {
-  background-color:#FAFAFA;
 }
 
 .plan-container {
