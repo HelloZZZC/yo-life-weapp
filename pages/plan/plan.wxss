@@ -1,10 +1,81 @@
 /* pages/plan/plan.wxss */
-page {
-  background-color:#FAFAFA;
+.plan-body {
+  padding: 0 48rpx;
 }
 
-.picker {
-  height: 80rpx;
+.calendar-container {
+  display:flex;
+  align-items:center;
+  line-height: 104rpx;
+  margin-bottom: 32rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.yo-icon {
+  font-size: 50rpx;
+  color: #6C91FF;
+}
+
+.text-date {
+  font-size: 28rpx;
+  margin-left: 20rpx;
+}
+
+.plan-content {
+  box-sizing: border-box;  
+  width: 100%;
+  height:160rpx;
+  padding: 16rpx;
+  margin-bottom: 40rpx;
+  background: #fafafa;
+  border-radius:4px;
+  font-size: 28rpx;
+}
+
+.plan-item {
+  line-height: 96rpx;
+  height: 96rpx;
+  /* border: 1px solid #000; */
+}
+
+.item-title {
+  float: left;
+  font-size: 32rpx;
+}
+
+.item-selector {
+  display: flex;
+  align-items: center;
+  height:96rpx;
+  float: right;
+  font-size: 28rpx;
+  color: #c1c1c1;
+}
+
+.radio-item {
+  float: left;
+  width: 104rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  margin-left: 32rpx;
+  text-align: center;
+  border-radius: 24rpx;
+  font-size: 24rpx;
+}
+
+.radio-item:nth-child(1) {
+  color: #fff;
+  background: #B0BDC9;
+}
+
+.radio-item:nth-child(2) {
+  border: 2rpx solid #FFC107;
+  color: #FFC107;
+}
+
+.radio-item:nth-child(3) {
+  border: 2rpx solid #F55F5F;
+  color: #F55F5F;
 }
 
 .btn-info {

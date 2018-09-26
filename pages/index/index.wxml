@@ -1,9 +1,9 @@
 <!--index.wxml-->
-<view class="container">
+<view class="index-container">
   <view wx:if="{{ !hasUserInfo || !count }}">
-    <view class="color-gray">
-      <text class="text-center">欢迎使用YoLife</text>
-      <text class="text-center">\n开始记录你的第一份计划吧</text>
+    <image class="index-blank__img" src='http://wechat-server.com/files/default-illustration.png'></image>
+    <view class="index-blank__text">
+      今天暂无计划哦~
     </view>
   </view>
   <view class="plan-container" wx:else>
@@ -14,7 +14,5 @@
     </i-swipeout>
   </view>
 </view>
-<view class="page-bottom">
-  <button wx:if="{{ !hasUserInfo }}" class="add-btn" type="primary" open-type="getUserInfo" bindgetuserinfo="getUserInfo">+</button>
-  <button wx:else class="add-btn" type="primary" bindtap="addPlan">+</button>
-</view>
+<view wx:if="{{ !hasUserInfo }}" class="yo-icon yo-icon-add add-btn bubble" bindgetuserinfo="getUserInfo"></view>
+<view wx:else bindtap="addPlan" class="yo-icon yo-icon-add add-btn bubble"></view>
