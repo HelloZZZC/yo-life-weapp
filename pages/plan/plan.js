@@ -2,8 +2,7 @@ Page({
   data: {
     level: [{
       key: 0,
-      value: '普通',
-      checked: 'true'
+      value: '普通'
     },{
       key: 1,
       value: '中等'
@@ -18,7 +17,7 @@ Page({
       key: 'fiveMinEarly',
       value: '提早5分钟'
     }],
-    currentLevel: '普通',
+    currentLevelKey: 0,
     executedStartTime: '选择时间',
     executedEndTime: '',
     currentRemindSetting: '不提醒',
@@ -45,7 +44,7 @@ Page({
   },
   pickLevel: function (e) {
     this.setData({
-      currentLevel: e.detail.value
+      currentLevelKey: e.detail.value
     })
   },
   pickRemindSetting: function (e) {
