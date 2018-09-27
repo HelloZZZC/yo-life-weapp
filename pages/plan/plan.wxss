@@ -104,3 +104,8 @@
   border-radius:12rpx;
   background-color: #6C91FF !important;
 }
+
+.header-style{
+  background: #188be4 ;
+  color: #fff;
+}
