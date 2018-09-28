@@ -105,6 +105,15 @@
   background-color: #6C91FF !important;
 }
 
+.calendar-box {
+  position: absolute;
+  top: 110rpx;
+  left: 30rpx;
+  width: 90%;
+  height: 65%;
+  z-index: 3;
+  background: #fff;
+}
 .header-style{
   background: #188be4 ;
   color: #fff;
