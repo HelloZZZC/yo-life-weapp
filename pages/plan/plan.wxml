@@ -1,6 +1,7 @@
 <view class='plan-body'>
   <view class='calendar-container'>
-    <image class='calendar-icon' src='http://wechat-server.com/files/calendar-icon@2x.png'></image>
+    <calendar wx:if="{{calendarShow}}" class="calendar-box" calendar-style="calendar"  header-style="calendar-header"  board-style="calendar-board" days-color="{{dayStyle}}" weeks-type="cn" binddayClick="dayClick" />
+    <image class='calendar-icon' bindtap="openCalendar" src='http://wechat-server.com/files/calendar-icon@2x.png'></image>
     <text class='text-date'>2018-09-05</text>
   </view>
   <form bindsubmit="formSubmit">
