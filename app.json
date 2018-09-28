@@ -1,7 +1,7 @@
 {
-  "pages":["pages/plan/plan",
+  "pages":[
     "pages/index/index",
-    
+    "pages/plan/plan",
     "pages/logs/logs"
   ],
   "window":{
