@@ -19,27 +19,38 @@
 
 .add-btn {
   position: absolute;
-  right: 36rpx;
+  right: 48rpx;
   bottom: 40rpx;
+  height: 140rpx;
+  width: 130rpx;
+  padding: 0;
+  background: none;
+}
+
+.add-image {
   height: 150rpx;
   width: 150rpx;
+  margin-left: -8rpx;
 }
+
 .add-btn.bubble:after {
   content: "";
   background: #d3dcf7;
   position: absolute;
   width: 130rpx;
   height: 130rpx;
-  left: -3rpx;
+  left: 0rpx;
   right: 0;
-  top: -15rpx;
+  top: -10rpx;
   bottom: 0;
   opacity: 0;
   margin: auto;
   border-radius: 50%;
   transform: scale(1);
+  transform-origin: 50%;
   transition: all 0.75s ease-in-out;
 }
+
 .add-btn.bubble:active:after {
   transform: scale(0);
   opacity: 1;
