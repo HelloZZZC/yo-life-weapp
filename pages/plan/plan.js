@@ -22,7 +22,8 @@ Page({
     executedEndTime: '',
     currentRemindSetting: '不提醒',
     isDayPlan: false,
-    planContent: ''
+    planContent: '',
+    calendarShow: false
   },
   //事件处理函数
   bindViewTap: function () {
@@ -60,6 +61,11 @@ Page({
   inputPlanContent: function (e) {
     this.setData({
       planContent: e.detail.detail.value
+    })
+  },
+  openCalendar() {
+    this.setData({
+      calendarShow: !this.data.calendarShow
     })
   },
   formSubmit: function (e) {
