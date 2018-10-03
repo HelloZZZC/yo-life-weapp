@@ -14,5 +14,9 @@
     </i-swipeout>
   </view>
 </view>
-<view wx:if="{{ !hasUserInfo }}" class="yo-icon yo-icon-add add-btn bubble" bindgetuserinfo="getUserInfo"></view>
-<view wx:else bindtap="addPlan" class="yo-icon yo-icon-add add-btn bubble"></view>
+<button wx:if="{{ !hasUserInfo }}" class="add-btn bubble" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+  <image class='add-image' src='http://wechat-server.com/files/create-icon@2x.png'></image>
+</button>
+<button wx:else class="add-btn bubble" bindtap="addPlan1">
+  <image class='add-image' src='http://wechat-server.com/files/create-icon@2x.png'></image>
+</button>
