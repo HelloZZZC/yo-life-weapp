@@ -1,6 +1,16 @@
 <view class='plan-body'>
   <view class='calendar-container'>
-    <i class="yo-icon yo-icon-calendar"></i>
+    <calendar wx:if="{{calendarShow}}" class="calendar-box"
+      calendar-style="calendar"
+      binddateChange="dateChange"
+      header-style="header-style"
+      board-style="calendar-board"
+      days-color="{{dayStyle}}"
+      weeks-type="cn"
+      binddayClick="dayClick"
+      bindprevMonth="calendarPrev"
+      bindnextMonth="calendarPrev"/>
+    <image class='calendar__img' bindtap="openCalendar" src='http://wechat-server.com/files/calendar-icon@2x.png'></image>
     <text class='text-date'>2018-09-05</text>
   </view>
   <form bindsubmit="formSubmit">
@@ -8,8 +18,8 @@
     <view class="plan-item clearfix">
       <text class='item-title'>优先级</text>
       <radio-group class="item-selector" bindchange="pickLevel">
-        <label class="radio-item" wx:for="{{level}}">
-          <radio class="hide" value="{{item.value}}" checked="{{item.checked}}"/>{{item.value}}
+        <label class="{{item.key == currentLevelKey ? 'active' : ''}} radio-item" wx:for="{{level}}" wx:key="{{level.key}}">
+          <radio class="hide" value="{{item.key}}"/>{{item.value}}
         </label>
       </radio-group>
     </view>
@@ -21,20 +31,18 @@
         </view>
       </picker>
     </view>
-  
-  
-    <!-- <i-panel title="内容" i-class="p20">
-      <i-input type="textarea"  placeholder="请输入内容" " />
-    </i-panel> -->
-    <i-panel title="每日计划" i-class="p20">
-      <i-switch value="{{ isDayPlan }}" bind:change="pickDayPlan" slot="footer"></i-switch>
-    </i-panel>
-    <i-panel title="提醒" i-class="p20">
-      <i-radio-group current="{{currentRemindSetting}}" bindchange="pickRemindSetting">
-        <i-radio wx:for="{{remindSetting}}" wx:key="{{item.key}}" value="{{item.value}}">
-        </i-radio>
-      </i-radio-group>
-    </i-panel>
+    <view class="plan-item clearfix">
+      <text class='item-title'>每日创建</text>
+      <i-switch class="item-selector" value="{{ isDayPlan }}" bind:change="pickDayPlan" slot="footer"></i-switch>
+    </view>
+    <view class="plan-item clearfix">
+      <text class='item-title'>提醒</text>
+      <radio-group class="item-selector" bindchange="pickRemindSetting">
+        <label class="color-gray" wx:for="{{remindSetting}}" wx:key="{{item.key}}" current="{{currentRemindSetting}}" >
+          <radio class="ml40" value="{{item.key}}" color='#6C91FF'/>{{item.value}}
+        </label>
+      </radio-group>
+    </view>
     <button class="btn-info" form-type="submit" type="primary">保存</button>
   </form>
 </view>
