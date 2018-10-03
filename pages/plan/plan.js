@@ -3,20 +3,24 @@ Page({
     level: [{
       key: 0,
       value: '普通'
-    },{
+    }, {
       key: 1,
       value: '中等'
-    },{
+    }, {
       key: 2,
       value: '紧急'
     }],
     remindSetting: [{
       key: 'noRemind',
       value: '不提醒'
-    },{
+    }, {
       key: 'fiveMinEarly',
       value: '提早5分钟'
     }],
+    dayStyle: [
+      { month: 'current', day: new Date().getDate(), color: 'white', background: '#AAD4F5' },
+      { month: 'current', day: new Date().getDate(), color: 'white', background: '#AAD4F5' }
+    ],
     currentLevelKey: 0,
     executedStartTime: '选择时间',
     executedEndTime: '',
@@ -63,15 +67,44 @@ Page({
       planContent: e.detail.detail.value
     })
   },
+  // about calendar
+  dayClick (event) {
+    let clickDay = event.detail.day;
+    let changeDay = `dayStyle[1].day`;
+    let changeBg = `dayStyle[1].background`;
+    let changeMonth = `dayStyle[1].month`;
+    this.setData({
+      [changeMonth]: "current",
+      [changeDay]: clickDay,
+      [changeBg]: "#84e7d0"
+    })
+    console.log(this.data.dayStyle)
+  },
   openCalendar() {
     this.setData({
       calendarShow: !this.data.calendarShow
     })
   },
+  dateChange (event) {
+    console.log(event.detail);
+  },
+  calendarPrev (event) {
+    console.log(event.detail)
+    let changeMonth = `dayStyle[1].month`;
+    this.setData({
+      [changeMonth]: 'prev',
+    })
+  },
+  calendarNext(event) {
+    let changeMonth = `dayStyle[1].month`;
+    this.setData({
+      [changeMonth]: 'next',
+    })
+  },
+
   formSubmit: function (e) {
     let remindSetting = getKeyByValue(this.data.remindSetting, this.data.currentRemindSetting)
     let level = getKeyByValue(this.data.level, this.data.currentLevel)
-
     let data = {
       executedStartTime: this.data.executedStartTime,
       executedEndTime: this.data.executedEndTime,

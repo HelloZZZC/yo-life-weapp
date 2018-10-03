@@ -3,7 +3,7 @@
   padding: 0 48rpx;
 }
 
-.calendar-icon {
+.calendar__img {
   width: 40rpx;
   height: 40rpx;
 }
@@ -115,6 +115,9 @@
   background: #fff;
 }
 .header-style{
-  background: #188be4 ;
-  color: #fff;
+  color: #59518d;
+}
+.calendar-board {
+  color: #c7cbe2;
+  font-weight: bold;
 }
