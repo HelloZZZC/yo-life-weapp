@@ -9,5 +9,11 @@
     "navigationBarBackgroundColor": "#6C91FF",
     "navigationBarTitleText": "YoLife",
     "navigationBarTextStyle":"#fff"
+  },
+  "plugins": {
+    "calendar": {
+      "version": "1.0.0",
+      "provider": "wx23a9cef3522e4f7c"
+    }
   }
 }
