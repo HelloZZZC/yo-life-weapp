@@ -11,15 +11,15 @@
       bindprevMonth="calendarPrev"
       bindnextMonth="calendarPrev"/>
     <image class='calendar__img' bindtap="openCalendar" src='http://wechat-server.com/files/calendar-icon@2x.png'></image>
-    <text class='text-date'>2018-09-05</text>
+    <text class='text-date'>{{ date }}</text>
   </view>
   <form bindsubmit="formSubmit">
     <textarea class='plan-content' placeholder='例：请在这里输入内容（必填）' value="{{ planContent }}" bindchange="inputPlanContent"></textarea>
     <view class="plan-item clearfix">
       <text class='item-title'>优先级</text>
       <radio-group class="item-selector" bindchange="pickLevel">
-        <label class="{{item.key == currentLevelKey ? 'active' : ''}} radio-item" wx:for="{{level}}" wx:key="{{level.key}}">
-          <radio class="hide" value="{{item.key}}"/>{{item.value}}
+        <label class="{{item.checked ? 'active' : ''}} radio-item" wx:for="{{level}}" wx:key="{{level.key}}">
+          <radio class="hide" value="{{item.key}}" checked='{{item.checked}}'/>{{item.value}}
         </label>
       </radio-group>
     </view>
@@ -37,8 +37,8 @@
     <view class="plan-item clearfix">
       <text class='item-title'>提醒</text>
       <radio-group class="item-selector" bindchange="pickRemindSetting">
-        <label class="color-gray" wx:for="{{remindSetting}}" wx:key="{{item.key}}" current="{{currentRemindSetting}}" >
-          <radio class="ml40" value="{{item.key}}" color='#6C91FF'/>{{item.value}}
+        <label class="color-gray" wx:for="{{remindSetting}}" wx:key="{{item.key}}"  >
+          <radio class="ml40" value="{{item.key}}" color='#6C91FF' checked="{{item.checked}}"/>{{item.value}}
         </label>
       </radio-group>
     </view>
