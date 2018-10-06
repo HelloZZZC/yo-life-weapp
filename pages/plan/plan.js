@@ -2,25 +2,29 @@ Page({
   data: {
     level: [{
       key: 0,
-      value: '普通'
-    },{
+      value: '普通',
+      checked: true
+    }, {
       key: 1,
       value: '中等'
-    },{
+    }, {
       key: 2,
       value: '紧急'
     }],
     remindSetting: [{
       key: 'noRemind',
-      value: '不提醒'
-    },{
+      value: '不提醒',
+      checked: true
+    }, {
       key: 'fiveMinEarly',
       value: '提早5分钟'
     }],
-    currentLevelKey: 0,
+    date: '',
+    dayStyle: [
+      { month: 'current', day: new Date().getDate(), color: 'white', background: '#AAD4F5' },
+      { month: 'current', day: new Date().getDate(), color: 'white', background: '#AAD4F5' }
+    ],
     executedStartTime: '选择时间',
-    executedEndTime: '',
-    currentRemindSetting: '不提醒',
     isDayPlan: false,
     planContent: '',
     calendarShow: false
@@ -32,25 +36,43 @@ Page({
     })
   },
   onLoad: function (option) {
+    let dateData = new Date();
+    this.setData({
+      date: `${dateData.getFullYear()}-${dateData.getMonth()+1}-${dateData.getDate()}`
+    })
   },
   pickStartTime: function (e) {
     this.setData({
       executedStartTime: e.detail.value
     })
   },
-  pickEndTime: function (e) {
-    this.setData({
-      executedEndTime: e.detail.value
-    })
-  },
   pickLevel: function (e) {
+    let index = e.detail.value;
+    let arr = this.data.level;
+    for (let i = 0; i < arr.length; i++) {
+      if(index.indexOf(arr[i].key) != -1) {
+        arr[i].checked = true;
+      } else {
+        arr[i].checked = false;
+      }
+    }
     this.setData({
-      currentLevelKey: e.detail.value
+      level: arr
     })
   },
   pickRemindSetting: function (e) {
+    let key = e.detail.value;
+    let items = this.data.remindSetting;
+    for (let i = 0; i < items.length; i++) {
+      if (key.indexOf(items[i].key) != -1) {
+        items[i].checked = true;
+      } else {
+        items[i].checked = false;
+      }
+    }
     this.setData({
-      currentRemindSetting: e.detail.value
+      remindSetting: items,
+      currentRemindSetting: key
     })
   },
   pickDayPlan: function (e) {
@@ -63,24 +85,53 @@ Page({
       planContent: e.detail.detail.value
     })
   },
+  // about calendar
+  dayClick (event) {
+    let clickDay = event.detail.day;
+    let changeDay = `dayStyle[1].day`;
+    let changeBg = `dayStyle[1].background`;
+    let changeMonth = `dayStyle[1].month`;
+    let date = `${event.detail.year}-${event.detail.month}-${event.detail.day}`;
+    this.setData({
+      [changeMonth]: "current",
+      [changeDay]: clickDay,
+      [changeBg]: "#84e7d0",
+      date: date,
+      calendarShow: false
+    })
+  },
   openCalendar() {
     this.setData({
       calendarShow: !this.data.calendarShow
     })
   },
-  formSubmit: function (e) {
-    let remindSetting = getKeyByValue(this.data.remindSetting, this.data.currentRemindSetting)
-    let level = getKeyByValue(this.data.level, this.data.currentLevel)
+  dateChange (event) {
+    console.log(event.detail);
+  },
+  calendarPrev (event) {
+    let changeMonth = `dayStyle[1].month`;
+    this.setData({
+      [changeMonth]: 'prev',
+    })
+  },
+  calendarNext(event) {
+    let changeMonth = `dayStyle[1].month`;
+    this.setData({
+      [changeMonth]: 'next',
+    })
+  },
 
+  formSubmit: function (e) {
+    let remindSetting = getKeyByValue(this.data.remindSetting)
+    let level = getKeyByValue(this.data.level)
     let data = {
+      date: this.data.date,
       executedStartTime: this.data.executedStartTime,
-      executedEndTime: this.data.executedEndTime,
       content: this.data.planContent,
       isDayPlan: this.data.isDayPlan,
       remindSetting: remindSetting,
       level: level
     }
-
     wx.request({
       url: 'http://wechat-server.com/api/plans',
       method: 'POST',
@@ -100,24 +151,21 @@ Page({
     })
   }
 })
-function getKeyByValue(group, value) {
-  if (!value) {
-    return '';
-  }
-  for (let index in group) {
-    if (group[index].value == value) {
-      return group[index].key;
+function getKeyByValue(group) {
+  for (let i = 0; i < group.length; i++) {
+    if (group[i].checked) {
+      return group[i].key;
     }
   }
 }
 
-function getValueByKey(group, key) {
-  if (!key) {
-    return '';
-  }
-  for (let index in group) {
-    if (group[index].key == key) {
-      return group[index].value;
-    }
-  }
-}
+// function getValueByKey(group, key) {
+//   if (!key) {
+//     return '';
+//   }
+//   for (let index in group) {
+//     if (group[index].key == key) {
+//       return group[index].value;
+//     }
+//   }
+// }
