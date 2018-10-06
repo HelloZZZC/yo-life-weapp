@@ -19,7 +19,7 @@ Page({
       key: 'fiveMinEarly',
       value: '提早5分钟'
     }],
-    date: '',
+    executedDate: '',
     dayStyle: [
       { month: 'current', day: new Date().getDate(), color: 'white', background: '#AAD4F5' },
       { month: 'current', day: new Date().getDate(), color: 'white', background: '#AAD4F5' }
@@ -38,7 +38,7 @@ Page({
   onLoad: function (option) {
     let dateData = new Date();
     this.setData({
-      date: `${dateData.getFullYear()}-${dateData.getMonth()+1}-${dateData.getDate()}`
+      executedDate: `${dateData.getFullYear()}-${dateData.getMonth()+1}-${dateData.getDate()}`
     })
   },
   pickStartTime: function (e) {
@@ -80,9 +80,9 @@ Page({
       isDayPlan: e.detail.value
     })
   },
-  inputPlanContent: function (e) {
+  inputPlanContent (e) {
     this.setData({
-      planContent: e.detail.detail.value
+      planContent: e.detail.value
     })
   },
   // about calendar
@@ -125,7 +125,7 @@ Page({
     let remindSetting = getKeyByValue(this.data.remindSetting)
     let level = getKeyByValue(this.data.level)
     let data = {
-      date: this.data.date,
+      executedDate: this.data.executedDate,
       executedStartTime: this.data.executedStartTime,
       content: this.data.planContent,
       isDayPlan: this.data.isDayPlan,
@@ -158,14 +158,3 @@ function getKeyByValue(group) {
     }
   }
 }
-
-// function getValueByKey(group, key) {
-//   if (!key) {
-//     return '';
-//   }
-//   for (let index in group) {
-//     if (group[index].key == key) {
-//       return group[index].value;
-//     }
-//   }
-// }

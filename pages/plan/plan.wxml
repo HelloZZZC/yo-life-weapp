@@ -11,10 +11,10 @@
       bindprevMonth="calendarPrev"
       bindnextMonth="calendarPrev"/>
     <image class='calendar__img' bindtap="openCalendar" src='http://wechat-server.com/files/calendar-icon@2x.png'></image>
-    <text class='text-date'>{{ date }}</text>
+    <text class='text-date'>{{ executedDate }}</text>
   </view>
   <form bindsubmit="formSubmit">
-    <textarea class='plan-content' placeholder='例：请在这里输入内容（必填）' value="{{ planContent }}" bindchange="inputPlanContent"></textarea>
+    <textarea class='plan-content' placeholder='例：请在这里输入内容（必填）' value="{{ planContent }}" bindinput="inputPlanContent"></textarea>
     <view class="plan-item clearfix">
       <text class='item-title'>优先级</text>
       <radio-group class="item-selector" bindchange="pickLevel">
