@@ -132,6 +132,7 @@ Page({
       remindSetting: remindSetting,
       level: level
     }
+    console.log(data)
     wx.request({
       url: 'http://wechat-server.com/api/plans',
       method: 'POST',

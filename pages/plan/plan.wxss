@@ -1,6 +1,6 @@
 /* pages/plan/plan.wxss */
-page {
-  background-color:#FAFAFA;
+.plan-body {
+  padding: 0 48rpx;
 }
 
 .calendar__img {

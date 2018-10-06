@@ -6,7 +6,7 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-  
+
     //检查session是否过期
     wx.checkSession({
       success: () => {
