@@ -25,7 +25,8 @@
     </view>
     <view class="plan-item clearfix">
       <picker mode="time" value="{{executedStartTime}}" start="00:00" end="23:59" bindchange="pickStartTime">
-        <view class="picker">
+        <text class='item-title'>时间</text>
+        <view class="item-selector">
           {{executedStartTime}}
         </view>
       </picker>

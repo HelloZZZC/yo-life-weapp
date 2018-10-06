@@ -1,6 +1,11 @@
 /**app.wxss**/
 @import "/vendor/iconfont/iconfont.wxss";
 
+page {
+  height: 100%;
+  background-color:#fff;
+}
+
 .container {
   height: 100%;
   display: flex;
@@ -9,6 +14,16 @@
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
+}
+
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.hide {
+  display: none;
 }
 
 .text-center {
@@ -28,3 +43,10 @@
   padding: 20rpx;
 }
 
+.mr20 {
+  margin-right: 20rpx;
+}
+
+.ml20 {
+  margin-left: 20rpx;
+}
