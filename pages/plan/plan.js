@@ -96,7 +96,7 @@ Page({
       [changeMonth]: "current",
       [changeDay]: clickDay,
       [changeBg]: "#84e7d0",
-      date: date,
+      executedDate: date,
       calendarShow: false
     })
   },

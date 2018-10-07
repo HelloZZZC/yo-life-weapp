@@ -6,7 +6,21 @@ Page({
   data: {
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    plans: {},
+    plans: {
+      "data": {
+        "id": 1,
+        "userId": 1,
+        "executedStartTime": "2018-09-18T05:00:00+0800", //DATE_ISO8601
+        "executedDate": "2018-09-18",
+        "content": "完成早上6点的晨练",
+        "level": "0", //优先级 0:普通,1:重要,2:紧急
+        "isDayPlan": 1, //是否每日计划 0:不是,1:是
+        "remindSetting": "noRemind", //提醒设置 noRemind:不提醒,fiveMinEarly:提前5分钟
+        "status": "unfinished", //unfinished:未完成,finished:完成
+        "createdTime": "2018-09-18T21:13:32+0800", //DATE_ISO8601
+        "updatedTime": "2018-09-18T21:13:32+0800" //DATE_ISO8601
+      },
+    },
     count: 0,
     actions: [
       {
@@ -24,7 +38,13 @@ Page({
         fontsize: '20',
         icon: 'undo'
       }
-    ]
+    ],
+    dayStyle: [
+      { month: 'current', day: new Date().getDate(), color: 'white', background: '#AAD4F5' },
+      { month: 'current', day: new Date().getDate(), color: 'white', background: '#AAD4F5' }
+    ],
+    calendarShow: false,
+    executedDate: ''
   },
   //事件处理函数
   bindViewTap: function() {
@@ -75,6 +95,10 @@ Page({
         }
       })
     }
+    let dateData = new Date();
+    this.setData({
+      executedDate: `${dateData.getFullYear()}-${dateData.getMonth() + 1}-${dateData.getDate()}`
+    })
   },
   getUserInfo: function(e) {
     bind(e.detail, true)
@@ -83,7 +107,47 @@ Page({
     wx.navigateTo({
       url: '../plan/plan?mode=create',
     })
-  }
+  },
+  openCalendar() {
+    this.setData({
+      calendarShow: !this.data.calendarShow
+    })
+  },
+  // about calendar
+  dayClick(event) {
+    let clickDay = event.detail.day;
+    let changeDay = `dayStyle[1].day`;
+    let changeBg = `dayStyle[1].background`;
+    let changeMonth = `dayStyle[1].month`;
+    let date = `${event.detail.year}-${event.detail.month}-${event.detail.day}`;
+    this.setData({
+      [changeMonth]: "current",
+      [changeDay]: clickDay,
+      [changeBg]: "#84e7d0",
+      executedDate: date,
+      calendarShow: false
+    })
+  },
+  openCalendar() {
+    this.setData({
+      calendarShow: !this.data.calendarShow
+    })
+  },
+  dateChange(event) {
+    console.log(event.detail);
+  },
+  calendarPrev(event) {
+    let changeMonth = `dayStyle[1].month`;
+    this.setData({
+      [changeMonth]: 'prev',
+    })
+  },
+  calendarNext(event) {
+    let changeMonth = `dayStyle[1].month`;
+    this.setData({
+      [changeMonth]: 'next',
+    })
+  },
 })
 function bind(response, needRedirect = false) {
   wx.request({
