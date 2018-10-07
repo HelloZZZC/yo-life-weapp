@@ -6,12 +6,32 @@
       今天暂无计划哦~
     </view>
   </view>
-  <view class="plan-container" wx:else>
-    <i-swipeout wx:for="{{plans}}" wx:key="{{item.id}}" actions="{{actions}}" toggle="{{false}}" unclosable="{{true}}">
-      <view slot="content">
-        {{ item.content }}
+  <view class='plan-container' wx:else>
+    <view class='calendar-container'>
+      <calendar wx:if="{{calendarShow}}" class='calendar-box'
+        calendar-style="calendar"
+        binddateChange="dateChange"
+        header-style="header-style"
+        board-style="calendar-board"
+        days-color="{{dayStyle}}"
+        weeks-type="cn"
+        binddayClick="dayClick"
+        bindprevMonth="calendarPrev"
+        bindnextMonth="calendarPrev"/>
+      <image class='calendar__img' bindtap="openCalendar" src='http://wechat-server.com/files/calendar-icon@2x.png'></image>
+      <text class='text-date'>{{ executedDate }}</text>
+    </view>
+    <view class='plan-list-container'>
+      <view class='plan-list__item clearfix' wx:for="{{plans}}" wx:key="{{item.id}}" actions="{{actions}}" toggle="{{false}}" unclosable="{{true}}">
+        <icon class='yo-icon yo-icon-checkbox plan-icon__finish'></icon>
+        <view class='plan-list__content complex-content text-overflow' slot="content">
+          {{item.content}}
+          <view class='plan-list__detail'>
+            8:00
+          </view>
+        </view>
       </view>
-    </i-swipeout>
+    </view>
   </view>
 </view>
 <button wx:if="{{ !hasUserInfo }}" class="add-btn bubble" open-type="getUserInfo" bindgetuserinfo="getUserInfo">

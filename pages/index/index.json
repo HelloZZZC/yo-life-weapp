@@ -2,6 +2,7 @@
   "usingComponents": {
     "i-button": "../../dist/button/index",
     "i-swipeout": "../../dist/swipeout/index",
-    "i-panel": "../../dist/panel/index"
+    "i-panel": "../../dist/panel/index",
+    "calendar": "plugin://calendar/calendar"
   }
 }
