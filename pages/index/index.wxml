@@ -22,21 +22,15 @@
       <text class='text-date'>{{ executedDate }}</text>
     </view>
     <view class='plan-list-container'>
-      <view class='plan-list__item clearfix' wx:for="{{plans}}" wx:key="{{item.id}}" actions="{{actions}}" toggle="{{false}}" unclosable="{{true}}">
-        <!-- <icon class='yo-icon yo-icon-checkbox plan-icon__finish'></icon> -->
-        <checkbox-group bindchange="checkboxChange">
-          <label class="checkbox" wx:for="{{plans}}" wx:key="{{item.id}}">
-            <checkbox value="{{item.content}}" checked="{{item.checked}}" class='plan-list__content complex-content text-overflow' slot="content"/>{{item.content}}
-            <view class='plan-list__detail'>
-              8:00
-            </view>
-          </label>
-        </checkbox-group>
-        <!-- <view class='plan-list__content complex-content text-overflow' slot="content">
-          
-          
-        </view> -->
-      </view>
+      <!-- <icon class='yo-icon yo-icon-checkbox plan-icon__finish'></icon> -->
+      <checkbox-group class='plan-list__item clearfix' bindchange="checkboxChange" wx:for="{{plans}}" wx:for-index="index" wx:key="{{item.id}}">
+        <label class="checkbox">
+          <checkbox class='plan-icon__checkbox' value="{{index}}" checked="{{item.status === 'unfinished' ? 0 : 1}}" slot="content"/>
+          <view class='complex-content plan-list__content text-overflow'>{{item.content}}
+            <view class='plan-list__detail'>8:00</view>
+          </view>
+        </label>
+      </checkbox-group>
     </view>
   </view>
 </view>
