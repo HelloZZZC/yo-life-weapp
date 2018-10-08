@@ -21,7 +21,7 @@ Page({
         "updatedTime": "2018-09-18T21:13:32+0800" //DATE_ISO8601
       },
     },
-    count: 0,
+    count: 4,
     actions: [
       {
         name: '删除',
