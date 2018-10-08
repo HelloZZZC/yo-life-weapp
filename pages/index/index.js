@@ -6,8 +6,8 @@ Page({
   data: {
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    plans: {
-      "data": {
+    plans: [
+      {
         "id": 1,
         "userId": 1,
         "executedStartTime": "2018-09-18T05:00:00+0800", //DATE_ISO8601
@@ -19,9 +19,9 @@ Page({
         "status": "unfinished", //unfinished:未完成,finished:完成
         "createdTime": "2018-09-18T21:13:32+0800", //DATE_ISO8601
         "updatedTime": "2018-09-18T21:13:32+0800" //DATE_ISO8601
-      },
-    },
-    count: 0,
+      }
+    ],
+    count: 4,
     actions: [
       {
         name: '删除',
@@ -111,6 +111,14 @@ Page({
   openCalendar() {
     this.setData({
       calendarShow: !this.data.calendarShow
+    })
+  },
+  checkboxChange(e) {
+    let index = Number(e.detail.value)
+    let items = this.data.plans;
+    items[index].status = (items[index].status === 'finished') ? 'unfinished' : 'finished';
+    this.setData({
+      plans: items
     })
   },
   // about calendar

@@ -123,36 +123,37 @@
 }
 
 .plan-list__item {
+  position: relative;
   height: 144rpx;
-  box-shadow:0rpx 20rpx 32rpx 0rpx rgba(108,145,255,0.02),0rpx -4rpx 20rpx 0rpx rgba(0,0,0,0.02);
+  margin-bottom: 40rpx;
+  box-shadow:0rpx 20rpx 32rpx 0rpx rgba(108,145,255,0.04),0rpx -4rpx 20rpx 0rpx rgba(0,0,0,0.04);
   border-radius:12rpx;
   text-align: left;
 }
 
-.plan-icon__finish {
-  float: left;
+.plan-icon__checkbox {
+  position: absolute;
+  left: 32px;
   line-height: 144rpx;
-  margin-left: 32rpx;
-  margin-right: 32rpx;
   font-size: 36rpx;
   color: #B0BDC9;
 }
 
 .plan-list__content {
-  float: left;
-  width: 85%;
-  height: 144rpx;
+  margin-left: 132rpx;
   color: #313131;
   font-size: 32rpx;
 }
 
 .single-content {
+  height: 144rpx;
   line-height: 144rpx;
 }
 
 .complex-content {
+  height: 114rpx;
   line-height: 48rpx;
-  margin-top: 30rpx;
+  padding-top: 30rpx;
 }
 
 .plan-list__detail {
