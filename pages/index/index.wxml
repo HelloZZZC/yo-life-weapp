@@ -27,7 +27,7 @@
         <label class="checkbox">
           <checkbox class='plan-icon__checkbox' value="{{index}}" checked="{{item.status === 'unfinished' ? 0 : 1}}" slot="content"/>
           <view class='complex-content plan-list__content text-overflow'>{{item.content}}
-            <view class='plan-list__detail'>{{item.executedStartTime}}</view>
+            <view class='plan-list__detail'>{{item.executedSpecificTime}}</view>
           </view>
         </label>
       </checkbox-group>
