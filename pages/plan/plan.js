@@ -130,7 +130,8 @@ Page({
       content: this.data.planContent,
       isDayPlan: this.data.isDayPlan,
       remindSetting: remindSetting,
-      level: level
+      level: level,
+      formId: 1
     }
     console.log(data)
     wx.request({
