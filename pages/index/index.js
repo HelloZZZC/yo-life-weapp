@@ -6,21 +6,7 @@ Page({
   data: {
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    plans: [
-      {
-        "id": 1,
-        "userId": 1,
-        "executedStartTime": "2018-09-18T05:00:00+0800", //DATE_ISO8601
-        "executedDate": "2018-09-18",
-        "content": "完成早上6点的晨练",
-        "level": "0", //优先级 0:普通,1:重要,2:紧急
-        "isDayPlan": 1, //是否每日计划 0:不是,1:是
-        "remindSetting": "noRemind", //提醒设置 noRemind:不提醒,fiveMinEarly:提前5分钟
-        "status": "unfinished", //unfinished:未完成,finished:完成
-        "createdTime": "2018-09-18T21:13:32+0800", //DATE_ISO8601
-        "updatedTime": "2018-09-18T21:13:32+0800" //DATE_ISO8601
-      }
-    ],
+    plans: [],
     count: 4,
     actions: [
       {
@@ -53,6 +39,12 @@ Page({
     })
   },
   onLoad: function () {
+    let todayDate = new Date();
+    let today = `${todayDate.getFullYear()}-${todayDate.getMonth() + 1}-${todayDate.getDate()}`;
+    this.setData({
+      executedDate: today
+    })
+    console.log(this.data.plans)
     if (app.globalData.userInfo) {
       this.setData({
         hasUserInfo: true
@@ -76,6 +68,7 @@ Page({
         }
       })
     }
+
     if (this.data.hasUserInfo) {
       wx.request({
         url: 'http://wechat-server.com/api/plans',
@@ -84,6 +77,7 @@ Page({
           'auth-key': wx.getStorageSync('thirdKey')
         },
         data: {
+          executedDate: today,
           offset: 0,
           limit: 10
         },
@@ -95,10 +89,6 @@ Page({
         }
       })
     }
-    let dateData = new Date();
-    this.setData({
-      executedDate: `${dateData.getFullYear()}-${dateData.getMonth() + 1}-${dateData.getDate()}`
-    })
   },
   getUserInfo: function(e) {
     bind(e.detail, true)
@@ -106,11 +96,6 @@ Page({
   addPlan: function(e) {
     wx.navigateTo({
       url: '../plan/plan?mode=create',
-    })
-  },
-  openCalendar() {
-    this.setData({
-      calendarShow: !this.data.calendarShow
     })
   },
   checkboxChange(e) {

@@ -11,7 +11,7 @@
       bindprevMonth="calendarPrev"
       bindnextMonth="calendarPrev"/>
     <image class='calendar__img' bindtap="openCalendar" src='http://wechat-server.com/files/calendar-icon@2x.png'></image>
-    <text class='text-date'>{{ executedDate }}</text>
+    <text class='text-date' bindtap="openCalendar">{{ executedDate }}</text>
   </view>
   <form bindsubmit="formSubmit">
     <textarea class='plan-content' placeholder='例：请在这里输入内容（必填）' value="{{ planContent }}" bindinput="inputPlanContent"></textarea>
