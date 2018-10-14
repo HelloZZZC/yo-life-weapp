@@ -160,3 +160,7 @@
   color: #B0BDC9;
   font-size: 28rpx;
 }
+
+.mr18 {
+  margin-right: 18rpx;
+}

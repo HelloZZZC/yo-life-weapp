@@ -44,7 +44,6 @@ Page({
     this.setData({
       executedDate: today
     })
-    console.log(this.data.plans)
     if (app.globalData.userInfo) {
       this.setData({
         hasUserInfo: true
@@ -81,7 +80,7 @@ Page({
           offset: 0,
           limit: 10
         },
-        success: res => {
+        success: res => {          
           this.setData({
             plans: res.data.items,
             count: res.data.count

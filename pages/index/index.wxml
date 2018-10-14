@@ -27,7 +27,11 @@
         <label class="checkbox">
           <checkbox class='plan-icon__checkbox' value="{{index}}" checked="{{item.status === 'unfinished' ? 0 : 1}}" slot="content"/>
           <view class='complex-content plan-list__content text-overflow'>{{item.content}}
-            <view class='plan-list__detail'>{{item.executedSpecificTime}}</view>
+            <view class='plan-list__detail'>
+              <text class='mr18'>{{item.executedSpecificTime}}</text>
+              <icon wx:if="{{item.remindSetting !== 'noRemind'}}" class='yo-icon yo-icon-clock mr18'></icon>
+              <icon wx:if="{{item.isDayPlan}}" class='yo-icon yo-icon-circulation mr18'></icon>
+            </view>
           </view>
         </label>
       </checkbox-group>
