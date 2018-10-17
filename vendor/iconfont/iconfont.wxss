@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'yo-icon';  /* project id 832641 */
-  src: url('//at.alicdn.com/t/font_832641_gne5u8kiqs.eot');
-  src: url('//at.alicdn.com/t/font_832641_gne5u8kiqs.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_832641_gne5u8kiqs.woff') format('woff'),
-  url('//at.alicdn.com/t/font_832641_gne5u8kiqs.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_832641_gne5u8kiqs.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_832641_fp3y1rtwwz5.eot');
+  src: url('//at.alicdn.com/t/font_832641_fp3y1rtwwz5.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_832641_fp3y1rtwwz5.woff') format('woff'),
+  url('//at.alicdn.com/t/font_832641_fp3y1rtwwz5.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_832641_fp3y1rtwwz5.svg#iconfont') format('svg');
 }
 
 .yo-icon {
@@ -14,6 +14,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.yo-icon-checked-square:before { content: "\e64f"; }
 
 .yo-icon-finished-hollow:before { content: "\e609"; }
 

@@ -7,7 +7,7 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     plans: [],
-    count: 4,
+    count: 0,
     actions: [
       {
         name: '删除',
@@ -68,7 +68,7 @@ Page({
       })
     }
 
-    if (this.data.hasUserInfo) {
+    if (!this.data.hasUserInfo) {
       wx.request({
         url: 'http://wechat-server.com/api/plans',
         method: 'GET',
@@ -80,7 +80,7 @@ Page({
           offset: 0,
           limit: 10
         },
-        success: res => {          
+        success: res => {
           this.setData({
             plans: res.data.items,
             count: res.data.count
@@ -98,11 +98,11 @@ Page({
     })
   },
   checkboxChange(e) {
-    let index = Number(e.detail.value)
+    let index = e.currentTarget.dataset.index
     let items = this.data.plans;
-    items[index].status = (items[index].status === 'finished') ? 'unfinished' : 'finished';
+    let status = (items[index].status === 'finished') ? 'unfinished' : 'finished';
     this.setData({
-      plans: items
+      [`plans[${index}].status`]: status
     })
   },
   // about calendar
