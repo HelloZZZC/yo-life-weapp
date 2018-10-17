@@ -27,7 +27,8 @@ Page({
     executedStartTime: '选择时间',
     isDayPlan: false,
     planContent: '',
-    calendarShow: false
+    calendarShow: false,
+    currentRemindSettingKey: 'noRemind'
   },
   //事件处理函数
   bindViewTap: function () {
@@ -72,7 +73,7 @@ Page({
     }
     this.setData({
       remindSetting: items,
-      currentRemindSetting: key
+      currentRemindSettingKey: key
     })
   },
   pickDayPlan: function (e) {
@@ -129,7 +130,7 @@ Page({
       executedStartTime: this.data.executedStartTime,
       content: this.data.planContent,
       isDayPlan: this.data.isDayPlan,
-      remindSetting: remindSetting,
+      remindSetting: this.data.currentRemindSettingKey,
       level: level,
       formId: 1
     }
