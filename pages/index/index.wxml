@@ -30,7 +30,7 @@
             <view class='complex-content plan-list__content text-overflow'>{{item.content}}
               <view class='plan-list__detail'>
                 <text class='mr18'>{{item.executedSpecificTime}}</text>
-                <icon wx:if="{{item.remindSetting != 'noRemind'}}" class='yo-icon yo-icon-clock mr18'></icon>
+                <icon wx:if="{{item.remindSetting !== 'noRemind'}}" class='yo-icon yo-icon-clock mr18'></icon>
                 <icon wx:if="{{item.isDayPlan}}" class='yo-icon yo-icon-circulation mr18'></icon>
               </view>
             </view>
