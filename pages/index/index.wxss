@@ -4,6 +4,15 @@
   padding: 0 48rpx;
 }
 
+.index-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 170rpx;
+  background-color: #fff;
+}
+
 .index-blank__img {
   margin-top: 248rpx;
   width: 528rpx;
@@ -19,7 +28,7 @@
 }
 
 .add-btn {
-  position: absolute;
+  position: fixed;
   right: 48rpx;
   bottom: 40rpx;
   height: 140rpx;
@@ -133,14 +142,14 @@
 
 .plan-icon__checkbox {
   position: absolute;
-  left: 32px;
+  left: 32rpx;
   line-height: 144rpx;
-  font-size: 36rpx;
+  font-size: 40rpx;
   color: #B0BDC9;
 }
 
 .plan-list__content {
-  margin-left: 132rpx;
+  margin-left: 100rpx;
   color: #313131;
   font-size: 32rpx;
 }
@@ -159,4 +168,28 @@
 .plan-list__detail {
   color: #B0BDC9;
   font-size: 28rpx;
+}
+
+.mr18 {
+  margin-right: 18rpx;
+}
+
+.plan-list__num {
+  position: fixed;
+  bottom: 68rpx;
+  left: 48rpx;
+  color: #B0BDC9;
+  font-size: 24rpx;
+}
+
+.plan-checkbox__level-0 .yo-icon {
+  color: #FFC107;
+}
+
+.plan-checkbox__level-1 .yo-icon {
+  color: #FFC107;
+}
+
+.plan-checkbox__level-2 .yo-icon {
+  color: #F55F5F;
 }
