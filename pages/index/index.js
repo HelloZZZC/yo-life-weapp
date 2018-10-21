@@ -48,6 +48,7 @@ Page({
       this.setData({
         hasUserInfo: true
       })
+      this.getPlanList()
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
@@ -55,6 +56,7 @@ Page({
         this.setData({
           hasUserInfo: true
         })
+        this.getPlanList()
       }
     } else {
       //在没有open-type="getUserInfo"做兼容处理
@@ -64,30 +66,32 @@ Page({
           this.setData({
             hasUserInfo: true
           })
+          this.getPlanList()
         }
       })
     }
-
-    if (this.data.hasUserInfo) {
-      wx.request({
-        url: 'http://wechat-server.com/api/plans',
-        method: 'GET',
-        header: {
-          'auth-key': wx.getStorageSync('thirdKey')
-        },
-        data: {
-          executedDate: today,
-          offset: 0,
-          limit: 10
-        },
-        success: res => {
-          this.setData({
-            plans: res.data.items,
-            count: res.data.count
-          });
-        }
-      })
-    }
+  },
+  getPlanList() {
+    let todayDate = new Date();
+    let today = `${todayDate.getFullYear()}-${todayDate.getMonth() + 1}-${todayDate.getDate()}`;
+    wx.request({
+      url: 'http://wechat-server.com/api/plans',
+      method: 'GET',
+      header: {
+        'auth-key': wx.getStorageSync('thirdKey')
+      },
+      data: {
+        executedDate: today,
+        offset: 0,
+        limit: 10
+      },
+      success: res => {
+        this.setData({
+          plans: res.data.items,
+          count: res.data.count
+        });
+      }
+    })
   },
   getUserInfo: function(e) {
     bind(e.detail, true)
