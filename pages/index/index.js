@@ -30,7 +30,8 @@ Page({
       { month: 'current', day: new Date().getDate(), color: 'white', background: '#AAD4F5' }
     ],
     calendarShow: false,
-    executedDate: ''
+    executedDate: '',
+    existPlan: false
   },
   //事件处理函数
   bindViewTap: function() {
@@ -46,7 +47,8 @@ Page({
     })
     if (app.globalData.userInfo) {
       this.setData({
-        hasUserInfo: true
+        hasUserInfo: true,
+        existPlan: true
       })
       this.getPlanList()
     } else if (this.data.canIUse) {
@@ -54,7 +56,8 @@ Page({
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
         this.setData({
-          hasUserInfo: true
+          hasUserInfo: true,
+          existPlan: true
         })
         this.getPlanList()
       }
@@ -64,16 +67,20 @@ Page({
         success: res => {
           bind(res);
           this.setData({
-            hasUserInfo: true
+            hasUserInfo: true,
+            existPlan: true
           })
           this.getPlanList()
         }
       })
     }
   },
-  getPlanList() {
+  getPlanList(date) {
     let todayDate = new Date();
     let today = `${todayDate.getFullYear()}-${todayDate.getMonth() + 1}-${todayDate.getDate()}`;
+    if(!date) {
+      date = today
+    }
     wx.request({
       url: 'http://wechat-server.com/api/plans',
       method: 'GET',
@@ -81,7 +88,7 @@ Page({
         'auth-key': wx.getStorageSync('thirdKey')
       },
       data: {
-        executedDate: today,
+        executedDate: date,
         offset: 0,
         limit: 10
       },
@@ -109,6 +116,13 @@ Page({
       [`plans[${index}].status`]: status
     })
   },
+  getAllPlans() {
+    this.setData({
+      calendarShow: false,
+      executedDate: '全部计划'
+    })
+    this.getPlanList()
+  },
   // about calendar
   dayClick(event) {
     let clickDay = event.detail.day;
@@ -121,8 +135,9 @@ Page({
       [changeDay]: clickDay,
       [changeBg]: "#84e7d0",
       executedDate: date,
-      calendarShow: false
+      calendarShow: false,
     })
+    this.getPlanList(date)
   },
   openCalendar() {
     this.setData({
