@@ -129,6 +129,7 @@
 
 .plan-list-container {
   margin-top: 16rpx;
+  margin-bottom: 200rpx;
 }
 
 .plan-list__item {
