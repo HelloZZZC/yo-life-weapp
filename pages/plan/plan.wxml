@@ -38,8 +38,8 @@
     <view class="plan-item clearfix">
       <text class='item-title'>提醒</text>
       <radio-group class="item-selector" bindchange="pickRemindSetting">
-        <label class="color-gray" wx:for="{{remindSetting}}" wx:key="{{item.key}}"  >
-          <radio class="ml40" value="{{item.key}}" color='#6C91FF' checked="{{item.checked}}"/>{{item.value}}
+        <label class="{{isDayPlan ? 'gray-lighter' : 'color-gray'}}" wx:for="{{remindSetting}}" wx:key="{{item.key}}"  >
+          <radio class="ml40" value="{{item.key}}" color='#6C91FF' checked="{{item.checked}}" disabled="{{isDayPlan}}"/>{{item.value}}
         </label>
       </radio-group>
     </view>

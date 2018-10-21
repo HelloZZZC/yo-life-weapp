@@ -78,7 +78,10 @@ Page({
   },
   pickDayPlan: function (e) {
     this.setData({
-      isDayPlan: e.detail.value
+      isDayPlan: e.detail.value,
+      [`remindSetting[0].checked`]: true,
+      [`remindSetting[1].checked`]: false,
+      currentRemindSettingKey: 'noRemind'
     })
   },
   inputPlanContent (e) {

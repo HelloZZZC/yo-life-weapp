@@ -35,6 +35,10 @@ page {
   color: #616161;
 }
 
+.gray-lighter {
+  color: #e1e1e1;
+}
+
 .color-primary {
   color: #6C91FF;
 }

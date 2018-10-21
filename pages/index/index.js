@@ -68,7 +68,7 @@ Page({
       })
     }
 
-    if (!this.data.hasUserInfo) {
+    if (this.data.hasUserInfo) {
       wx.request({
         url: 'http://wechat-server.com/api/plans',
         method: 'GET',
