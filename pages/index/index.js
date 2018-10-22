@@ -111,9 +111,29 @@ Page({
   checkboxChange(e) {
     let index = e.currentTarget.dataset.index
     let items = this.data.plans;
+    let id = items[index].id;
+    let date = items[index].executedDate;
     let status = (items[index].status === 'finished') ? 'unfinished' : 'finished';
     this.setData({
       [`plans[${index}].status`]: status
+    })
+    wx.request({
+      url: 'http://wechat-server.com/api/plans/' + id + '/status/' + status,
+      method: 'PATCH',
+      header: {
+        'auth-key': wx.getStorageSync('thirdKey')
+      },
+      data: {
+        executedDate: date,
+        offset: 0,
+        limit: 10
+      },
+      success: res => {
+        this.setData({
+          plans: res.data.items,
+          count: res.data.count
+        });
+      }
     })
   },
   getAllPlans() {
