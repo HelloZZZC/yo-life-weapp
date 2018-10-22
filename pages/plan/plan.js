@@ -130,7 +130,7 @@ Page({
     let level = getKeyByValue(this.data.level)
     let data = {
       executedDate: this.data.executedDate,
-      executedStartTime: this.data.executedStartTime,
+      executedStartTime: this.data.executedStartTime == '选择时间' ? '' : this.data.executedStartTime,
       content: this.data.planContent,
       isDayPlan: this.data.isDayPlan,
       remindSetting: this.data.currentRemindSettingKey,
