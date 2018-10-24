@@ -138,7 +138,7 @@ Page({
       calendarShow: false,
       executedDate: '全部计划'
     })
-    this.getPlanList('all')
+    this.getPlanList()
   },
   // about calendar
   dayClick(event) {
