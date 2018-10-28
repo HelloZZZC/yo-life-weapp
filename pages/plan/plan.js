@@ -28,7 +28,8 @@ Page({
     isDayPlan: false,
     planContent: '',
     calendarShow: false,
-    currentRemindSettingKey: 'noRemind'
+    currentRemindSettingKey: 'noRemind',
+    editId: null,
   },
   //事件处理函数
   bindViewTap: function () {
@@ -41,6 +42,21 @@ Page({
     this.setData({
       executedDate: `${dateData.getFullYear()}-${dateData.getMonth()+1}-${dateData.getDate()}`
     })
+
+    // 编辑复原
+    if (option.editItem) {
+      let editItem = JSON.parse(option.editItem);
+      let remindIndex = editItem.remindSetting == 'noRemind' ? 0 : 1;
+      this.setData({
+        editId: editItem.id,
+        executedDate: editItem.executedDate,
+        executedStartTime: editItem.executedSpecificTime,
+        planContent: editItem.content,
+        [`level[${editItem.level}].checked`]: true ,
+        isDayPlan: editItem.isDayPlan,
+        [`remindSetting[${remindIndex}].checked`]: true
+      })
+    }
   },
   pickStartTime: function (e) {
     this.setData({
@@ -138,9 +154,17 @@ Page({
       formId: 1
     }
     console.log(data)
+    let url = 'http://wechat-server.com/api/plans';
+    let method = 'POST';
+    if (this.data.editId) {
+      data.id = this.data.editId;
+      url = 'http://wechat-server.com/api/plans/' + this.data.editId;
+      method = 'PUT';
+    }
+    console.log(this.data.editId, url, method)
     wx.request({
-      url: 'http://wechat-server.com/api/plans',
-      method: 'POST',
+      url: url,
+      method: method,
       data: data,
       header: {
         'content-type': 'application/x-www-form-urlencoded',

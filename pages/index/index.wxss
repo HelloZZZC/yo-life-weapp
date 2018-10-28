@@ -200,6 +200,25 @@
   font-size: 28rpx;
 }
 
+.handle-container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-around;
+  width: 240rpx;
+  height: 144rpx;
+  padding: 36rpx 20rpx;
+  line-height: 144rpx;
+  background: #FAFAFA;
+}
+
+.handle-icon {
+  width: 72rpx;
+  height: 72rpx;
+}
+
 .mr18 {
   margin-right: 18rpx;
 }

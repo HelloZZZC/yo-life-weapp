@@ -119,14 +119,9 @@ Page({
     })
     wx.request({
       url: 'http://wechat-server.com/api/plans/' + id + '/status/' + status,
-      method: 'PATCH',
+      method: 'PUT',
       header: {
         'auth-key': wx.getStorageSync('thirdKey')
-      },
-      data: {
-        executedDate: date,
-        offset: 0,
-        limit: 10
       },
       success: res => {
         this.setData({
@@ -142,6 +137,16 @@ Page({
       executedDate: '全部计划'
     })
     this.getPlanList()
+  },
+  editPlan(e) {
+    let index = e.currentTarget.dataset.index;
+    let editItem = JSON.stringify(this.data.plans[index]);
+    wx.navigateTo({
+      url: '../plan/plan?editItem=' + editItem,
+    })
+  },
+  deletePlan() {
+
   },
   // about calendar
   dayClick(event) {
