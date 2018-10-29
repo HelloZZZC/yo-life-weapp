@@ -43,8 +43,8 @@
               <icon wx:if="{{item.isDayPlan}}" class='yo-icon yo-icon-circulation mr18'></icon>
             </view>
             <view class='handle-container'>
-              <image class='handle-icon' bindtap="editPlan" data-index="{{index}}"src='https://user-gold-cdn.xitu.io/2018/10/27/166b4866488216f8?w=64&h=64&f=png&s=3314'></image>
-              <image class='handle-icon' bindtap="deletePlan" data-index="{{index}}"src='https://user-gold-cdn.xitu.io/2018/10/27/166b486d07375187?w=64&h=64&f=png&s=3276'></image>
+              <image class='handle-icon' bindtap="editPlan" data-index="{{index}}" src='https://user-gold-cdn.xitu.io/2018/10/27/166b4866488216f8?w=64&h=64&f=png&s=3314'></image>
+              <image class='handle-icon' bindtap="deletePlan" data-index="{{index}}" src='https://user-gold-cdn.xitu.io/2018/10/27/166b486d07375187?w=64&h=64&f=png&s=3276'></image>
             </view>
           </view>
       </view>
