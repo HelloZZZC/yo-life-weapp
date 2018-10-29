@@ -106,7 +106,7 @@ Page({
     })
   },
   checkboxChange(e) {
-    let index = e.currentTarget.dataset.index
+    let index = parseInt(e.currentTarget.dataset.index);
     let items = this.data.plans;
     let id = items[index].id;
     let date = items[index].executedDate;
@@ -136,14 +136,30 @@ Page({
     this.getPlanList()
   },
   editPlan(e) {
-    let index = e.currentTarget.dataset.index;
+    let index = parseInt(e.currentTarget.dataset.index);
     let editItem = JSON.stringify(this.data.plans[index]);
     wx.navigateTo({
       url: '../plan/plan?editItem=' + editItem,
     })
   },
-  deletePlan() {
-
+  deletePlan(e) {
+    let index = parseInt(e.currentTarget.dataset.index);
+    let item = this.data.plans;
+    let id = item[index].id;
+    wx.request({
+      url: 'http://wechat-server.com/api/plans/' + id,
+      method: 'DELETE',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'auth-key': wx.getStorageSync('thirdKey')
+      },
+      success: res => {
+        item.splice(index, 1);
+        this.setData({
+          plans: item
+        })
+      },
+    })
   },
   // about calendar
   dayClick(event) {
