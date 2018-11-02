@@ -25,7 +25,7 @@ Page({
       { month: 'current', day: new Date().getDate(), color: 'white', background: '#AAD4F5' }
     ],
     executedStartTime: '选择时间',
-    isDayPlan: false,
+    isDayPlan: 0,
     planContent: '',
     calendarShow: false,
     currentRemindSettingKey: 'noRemind',
@@ -93,8 +93,9 @@ Page({
     })
   },
   pickDayPlan: function (e) {
+    let isDayPlan = e.detail.value ? 1 : 0;
     this.setData({
-      isDayPlan: e.detail.value,
+      isDayPlan: isDayPlan,
       [`remindSetting[0].checked`]: true,
       [`remindSetting[1].checked`]: false,
       currentRemindSettingKey: 'noRemind'
