@@ -202,7 +202,7 @@
 
 .handle-container {
   position: absolute;
-  right: 0;
+  right: 100rpx;
   top: 0;
   box-sizing: border-box;
   display: flex;
@@ -241,4 +241,17 @@
 
 .plan-checkbox__level-2 .yo-icon {
   color: #F55F5F;
+}
+
+.inner{
+  position: absolute;
+  top:0;
+}
+.inner.txt{
+  width: 100%;
+  z-index: 5;
+  transition: left 0.2s ease-in-out;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
