@@ -35,7 +35,7 @@
               class="yo-icon plan-icon__checkbox {{item.status !== 'unfinished' ? 'yo-icon-checked-square' : 'yo-icon-checkbox'}}">
             </icon>
           </view>
-          <view class='complex-content plan-list__content text-overflow'>
+          <view bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.txtStyle}}" class='inner txt complex-content plan-list__content text-overflow'>
             <text class='plan-content__text'>{{item.content}}</text>
             <view class='plan-list__detail'>
               <text class='mr18'>{{item.executedSpecificTime}}</text>
