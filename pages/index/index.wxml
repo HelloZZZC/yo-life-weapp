@@ -28,6 +28,7 @@
     </view>
     <view class='plan-list-container'>
       <view class="plan-list__item {{item.status !== 'unfinished' ? 'finished-item' : ''}}" wx:for="{{plans}}" wx:for-index="index" wx:key="index">
+        <view bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.txtStyle}}" class='inner txt complex-content plan-list__content text-overflow'>
           <view class='plan-checkbox__level-{{item.level}}'>
             <icon
               data-index="{{index}}"
@@ -35,18 +36,17 @@
               class="yo-icon plan-icon__checkbox {{item.status !== 'unfinished' ? 'yo-icon-checked-square' : 'yo-icon-checkbox'}}">
             </icon>
           </view>
-          <view bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.txtStyle}}" class='inner txt complex-content plan-list__content text-overflow'>
-            <text class='plan-content__text'>{{item.content}}</text>
-            <view class='plan-list__detail'>
-              <text class='mr18'>{{item.executedSpecificTime}}</text>
-              <icon wx:if="{{item.remindSetting !== 'noRemind'}}" class='yo-icon yo-icon-clock mr18'></icon>
-              <icon wx:if="{{item.isDayPlan}}" class='yo-icon yo-icon-circulation mr18'></icon>
-            </view>
-            <view class='handle-container'>
+          <text class='plan-content__text'>{{item.content}}</text>
+          <view class='plan-list__detail'>
+            <text class='mr18'>{{item.executedSpecificTime}}</text>
+            <icon wx:if="{{item.remindSetting !== 'noRemind'}}" class='yo-icon yo-icon-clock mr18'></icon>
+            <icon wx:if="{{item.isDayPlan}}" class='yo-icon yo-icon-circulation mr18'></icon>
+          </view>
+        </view>
+        <view class='handle-container'>
               <image class='handle-icon' bindtap="editPlan" data-index="{{index}}" src='https://user-gold-cdn.xitu.io/2018/10/27/166b4866488216f8?w=64&h=64&f=png&s=3314'></image>
               <image class='handle-icon' bindtap="deletePlan" data-index="{{index}}" src='https://user-gold-cdn.xitu.io/2018/10/27/166b486d07375187?w=64&h=64&f=png&s=3276'></image>
             </view>
-          </view>
       </view>
       <view wx:if="{{!count}}">
         <image class="index-blank__img" src='http://wechat-server.com/files/default-illustration.png'></image>
