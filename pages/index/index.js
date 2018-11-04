@@ -31,7 +31,9 @@ Page({
     ],
     calendarShow: false,
     executedDate: '',
-    existPlan: false
+    existPlan: false,
+    delBtnWidth: 240,
+    startX: ""
   },
   //事件处理函数
   bindViewTap: function() {

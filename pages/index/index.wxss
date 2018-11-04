@@ -173,15 +173,17 @@
 .plan-icon__checkbox {
   position: absolute;
   left: 32rpx;
+  top: 0;
   line-height: 144rpx;
   font-size: 40rpx;
   color: #B0BDC9;
 }
 
 .plan-list__content {
-  margin-left: 100rpx;
+  padding-left: 100rpx;
   color: #313131;
   font-size: 32rpx;
+  background: #fff;
 }
 
 .single-content {
@@ -190,9 +192,10 @@
 }
 
 .complex-content {
-  height: 114rpx;
+  height: 144rpx;
   line-height: 48rpx;
   padding-top: 30rpx;
+  padding-right: 30rpx;
 }
 
 .plan-list__detail {
@@ -202,7 +205,7 @@
 
 .handle-container {
   position: absolute;
-  right: 100rpx;
+  right: 0;
   top: 0;
   box-sizing: border-box;
   display: flex;
@@ -212,6 +215,7 @@
   padding: 36rpx 20rpx;
   line-height: 144rpx;
   background: #FAFAFA;
+  z-index: 1;
 }
 
 .handle-icon {
@@ -254,4 +258,5 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  box-sizing:border-box;
 }
