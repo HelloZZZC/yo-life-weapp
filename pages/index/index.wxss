@@ -132,7 +132,7 @@
   left: 30rpx;
   width: 90%;
   height: 65%;
-  z-index: 3;
+  z-index: 10;
   background: #fff;
 }
 .header-style{
